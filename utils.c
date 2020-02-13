@@ -13,24 +13,26 @@
 double degreesToRadians(double degree) {
 	double radian;
 	
-	radian = (degree*pi)/180;
+	radian = (degree*M_PI)/180;
 	
 	return radian;
 }
 double getAirDistance(double originLatitude,double originLongitude,double destinationLatitude,double destinationLongitude) {
+	double originLatitudeR = degreesToRadians(originLatitude);
+	double originLongitudeR = degreesToRadians(originLongitude);
+	double destinationLatitudeR = degreeToRadians(destinationLatitude);
+	double destinationLongitudeR = degreeToRadians(destinationLongitude);
 	double distance;
 	double differnceLongitude; 
-	double radian;
 	
-	differnceLongitude = destinationLongitude-originLongitude;
+	differnceLongitude = destinationLongitudeR-originLongitudeR;
 	
-	distance = acos(sin(radian*originLatitude) *sin(radian*destinationLatitude) + cos(radian*originLatitude) *cos(radian*destinationLatitude) *cos(radian*differnceLongitude))*6371;
+	distance = acos(sin(originLatitudeR) *sin(destinationLatitudeR) + cos(originLatitudeR) *cos(destinationLatitudeR) *cos(differnceLongitude))*6371;
 	
 	return distance;
 }
 double lorentzTimeDilation(double t, double percentC) {
 	double timeDilation;
-	
 	
 	timeDilation = t/sqrt(1-(percentC));
 	

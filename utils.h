@@ -8,6 +8,7 @@
 */
 
 //TODO: place your function prototypes here
+
 double degreesToRadians(double degree);
 double getAirDistance(double originLatitude,double originLongitude,double destinationLatitude,double destinationLongitude);
 double lorentzTimeDilation(double t, double percentC);
